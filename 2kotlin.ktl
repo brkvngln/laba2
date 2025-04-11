@@ -1,0 +1,33 @@
+fun count(nums: List<Int>): Int {
+    var count = 0
+    for (num in nums) {
+        // Считаем количество цифр в числе
+        var numb = 0
+        if (num == 0) {
+            numb = 1 // У числа 0 одна цифра
+        } else {
+            var temp = num
+            while (temp != 0) {
+                temp /= 10
+                numb++
+            }
+        }
+        // Проверяем, нечетное ли количество цифр
+        if (numb % 2 != 0) {
+            count++
+        }
+    }
+    return count
+}
+fun main() {
+    println("Введите количество чисел: ")
+    val n = readLine()!!.toInt()
+    val nums = mutableListOf<Int>()
+    println("Введите $n целых числа:")
+    for (i in 0 until n) {
+        val number = readLine()!!.toInt()
+        nums.add(number) // Вводим числа в список
+    }
+    val res = count(nums)
+    println("Количество чисел с нечетным количеством цифр: $res")
+}

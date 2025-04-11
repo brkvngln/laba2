@@ -1,0 +1,24 @@
+fun compr(s: String): String {
+    if (s.isEmpty()) return s
+    val comp = StringBuilder()
+    var count = 1
+    for (i in 1 until s.length) {
+        if (s[i] == s[i - 1]) {
+            count++
+        } else {
+            comp.append(s[i - 1])
+            comp.append(count)
+            count = 1
+        }
+    }
+    // добавляем последний символ и его количество
+    comp.append(s[s.length - 1])
+    comp.append(count)
+    // возвращаем сжатую строку, если она короче исходной
+    return if (comp.length < s.length) comp.toString() else s
+}
+fun main() {
+    val S = readLine() ?: ""
+    val comp = compr(S)
+    println("Сжатая строка: $comp") // 
+}
